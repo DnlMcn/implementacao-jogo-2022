@@ -9,7 +9,7 @@ Requerimentos:
 - Gravidade
 - Velocidade
 - Movimentação (teclado e mouse)
-- Menu ( uma das cenaa)
+- Menu (uma das cenas)
 - Heads Up display
 - Tratamento de colisões
 - Joints
