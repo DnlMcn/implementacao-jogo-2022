@@ -7,8 +7,8 @@ public class MouseLook : MonoBehaviour
     public Transform playerBody;
 
     public float mouseSensitivity;
-
     float xRotation = 0f;
+
 
     void Start()
     {

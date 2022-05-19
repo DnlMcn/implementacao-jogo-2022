@@ -4,15 +4,15 @@ Projeto com o objetivo de demonstrar várias funcionalidades do Unity. Desenvolv
 
 Requerimentos: 
 
-- Tamanho / Escala
-- Rotação
+- Tamanho / Escala ✔
+- Rotação 
 - Gravidade
-- Velocidade
-- Movimentação (teclado e mouse)
+- Velocidade 
+- Movimentação (teclado e mouse) ✔
 - Menu (uma das cenas)
 - Heads Up display
-- Tratamento de colisões
-- Joints
+- Tratamento de colisões ✔
+- Joints 
 - Prefabs
 - Raycast 
-- Aplicar os Conceitos de Orientação a objeto
+- Aplicar os Conceitos de Orientação a objeto ✔
