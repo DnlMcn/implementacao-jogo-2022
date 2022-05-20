@@ -13,8 +13,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
         movement = transform.right * x + transform.forward * z;
 
         controller.Move(movement * movementSpeed * Time.deltaTime);   

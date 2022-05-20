@@ -13,6 +13,6 @@ Requerimentos:
 - Heads Up display
 - Tratamento de colisões ✔
 - Joints 
-- Prefabs
+- Prefabs ✔
 - Raycast 
 - Aplicar os Conceitos de Orientação a objeto ✔
