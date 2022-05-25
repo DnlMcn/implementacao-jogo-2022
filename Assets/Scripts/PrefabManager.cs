@@ -13,7 +13,7 @@ public class PrefabManager : MonoBehaviour
 
     public Vector3 RandomPosition()
     {
-        Vector3 position = new Vector3(Random.Range(-rangeX, rangeX), Random.Range(-rangeY, rangeY), Random.Range(-rangeZ, rangeZ));
+        Vector3 position = new Vector3(Random.Range(-rangeX, rangeX), Random.Range(1, rangeY * 2 + 1), Random.Range(-rangeZ, rangeZ));
         return position;        
     }
 
