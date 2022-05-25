@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScaleRay : MonoBehaviour
 {
     Transform lastHit;
-    public float scalingRate = 5f;
+    const float SCALING_RATE = 1.5f;
     Vector3 scaleChange;
 
     void TryShoot()
@@ -18,7 +18,7 @@ public class ScaleRay : MonoBehaviour
             {
                 Debug.Log("Object being scaled up."); 
                 lastHit = hit.collider.transform;
-                scaleChange = lastHit.localScale * scalingRate;
+                scaleChange = lastHit.localScale * SCALING_RATE;
                 ScaleChange(0);
             }
         }
@@ -31,7 +31,7 @@ public class ScaleRay : MonoBehaviour
             {
                 Debug.Log("Object being scaled down.");
                 lastHit = hit.collider.transform;
-                scaleChange = lastHit.localScale * scalingRate;
+                scaleChange = lastHit.localScale * SCALING_RATE;
                 ScaleChange(1);
             }
         }
