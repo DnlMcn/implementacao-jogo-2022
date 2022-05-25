@@ -11,30 +11,29 @@ public class Raycast : MonoBehaviour
     private void Start() 
     {
         scaleChange = new Vector3(scaleChangeRate, scaleChangeRate, scaleChangeRate);
-
     }
 
     void TryShoot()
     {
         if (Input.GetMouseButton(0))
         {
-            var ray = new Ray(transform.position, transform.forward);
+            Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 lastHit = hit.collider.transform;
-                ScaleChange(1);
+                ScaleChange(0);
             }
         }
 
         else if (Input.GetMouseButton(1))
         {
-            var ray = new Ray(transform.position, transform.forward);
+            Ray ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
                 lastHit = hit.collider.transform;
-                ScaleChange(2);
+                ScaleChange(1);
             }
         }
     }
@@ -43,10 +42,10 @@ public class Raycast : MonoBehaviour
     {
         switch (type)
         {
-            case 2:
-                lastHit.localScale += scaleChange * Time.deltaTime;
-                break;
             case 1:
+                lastHit.localScale -= scaleChange * Time.deltaTime;
+                break;
+            case 0:
                 lastHit.localScale += scaleChange * Time.deltaTime;
                 break;
             default:
@@ -56,7 +55,6 @@ public class Raycast : MonoBehaviour
 
     void Update()
     {
-        
-
+        TryShoot();
     }
 }

@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     Vector3 movement;
     public float movementSpeed;
-    
 
     void Update()
     {
@@ -17,7 +16,6 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         movement = transform.right * x + transform.forward * z;
 
-        controller.Move(movement * movementSpeed * Time.deltaTime);   
-
+        controller.Move(movement * movementSpeed * Time.deltaTime);
     }
 }
