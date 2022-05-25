@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScaleRay : MonoBehaviour
 {
     Transform lastHit;
-    public float scalingRate = 10f;
+    public float scalingRate = 5f;
     Vector3 scaleChange;
 
     void TryShoot()
