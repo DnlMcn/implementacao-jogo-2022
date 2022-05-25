@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Raycast : MonoBehaviour
+public class ScaleRay : MonoBehaviour
 {
     Transform lastHit;
-    public float scaleChangeRate = 10f;
+    public float scalingRate = 10f;
     Vector3 scaleChange;
-
-    private void Start() 
-    {
-        scaleChange = new Vector3(scaleChangeRate, scaleChangeRate, scaleChangeRate);
-    }
 
     void TryShoot()
     {
@@ -21,7 +16,9 @@ public class Raycast : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log("Object being scaled up."); 
                 lastHit = hit.collider.transform;
+                scaleChange = lastHit.localScale * scalingRate;
                 ScaleChange(0);
             }
         }
@@ -32,7 +29,9 @@ public class Raycast : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log("Object being scaled down.");
                 lastHit = hit.collider.transform;
+                scaleChange = lastHit.localScale * scalingRate;
                 ScaleChange(1);
             }
         }

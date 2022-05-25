@@ -5,17 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
-    public Transform transform;
+    public Transform playerTransform;
 
     Vector3 movement;
     public float movementSpeed;
+    public float jumpHeight;
+
+    Vector3 GetMovement()
+    {
+        movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movement = movement.x * playerTransform.right + movement.z * playerTransform.forward;
+        return movement;
+    }
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        movement = transform.right * x + transform.forward * z;
+        controller.Move(GetMovement() * movementSpeed * Time.deltaTime);
 
-        controller.Move(movement * movementSpeed * Time.deltaTime);
+
     }
 }
