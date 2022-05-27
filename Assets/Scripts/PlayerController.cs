@@ -13,12 +13,13 @@ public class PlayerController : MonoBehaviour
     float jumpHeight = 2.5f;
     float gravity = 12f;
     bool isGrounded = false;
-    // float groundCheckDistance;
+    float groundCheckDistance;
 
     Vector3 GetMovement()
     {
         movement = new Vector3(Input.GetAxis("Horizontal"), 1, Input.GetAxis("Vertical"));
         movement = movement.x * playerTransform.right + movement.z * playerTransform.forward;
+
         return movement;
     }
 
