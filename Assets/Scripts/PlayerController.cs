@@ -6,15 +6,14 @@ public class PlayerController : MonoBehaviour
 {
     public CharacterController controller;
     public Transform playerTransform;
-    public Transform groundCheck;
     public LayerMask groundMask;
 
     Vector3 movement;
     public float movementSpeed;
     float jumpHeight = 2.5f;
     float gravity = 12f;
-    bool isGrounded;
-    float groundCheckDistance;
+    bool isGrounded = false;
+    // float groundCheckDistance;
 
     Vector3 GetMovement()
     {
@@ -26,8 +25,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement = GetMovement();
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundCheckDistance, groundMask);
 
         if (Input.GetButtonDown("Jump") && isGrounded) { movement.y = Mathf.Sqrt(jumpHeight * -2 * gravity); }
 

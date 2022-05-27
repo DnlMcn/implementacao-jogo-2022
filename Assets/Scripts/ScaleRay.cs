@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ScaleRay : MonoBehaviour
 {
     Transform lastHit;
     const float SCALING_RATE = 1.5f;
     Vector3 scaleChange;
+
+    public event Action OnLeftMouseClick;
+    public event Action OnRightMouseClick;
+    bool hasLeftClicked;
+    bool hasRightClicked;
 
     void TryShoot()
     {
@@ -43,9 +49,13 @@ public class ScaleRay : MonoBehaviour
         {
             case 1:
                 lastHit.localScale -= scaleChange * Time.deltaTime;
+                if (!hasRightClicked) OnRightMouseClick?.Invoke();
+                hasRightClicked = true;
                 break;
             case 0:
                 lastHit.localScale += scaleChange * Time.deltaTime;
+                if (!hasLeftClicked) OnLeftMouseClick?.Invoke();
+                hasLeftClicked = true;
                 break;
             default:
                 break;

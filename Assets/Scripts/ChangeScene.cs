@@ -7,12 +7,12 @@ public class ChangeScene : MonoBehaviour
 {
     public string sceneName;
 
-    public void changeS()
+    public void Change()
     {
         SceneManager.LoadScene(sceneName);
     }
 
-    public void sair()
+    public void Quit()
     {
         Application.Quit();
     }
