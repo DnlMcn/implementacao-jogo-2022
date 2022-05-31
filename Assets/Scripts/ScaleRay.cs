@@ -6,6 +6,7 @@ using System;
 public class ScaleRay : MonoBehaviour
 {
     Transform lastHit;
+    Rigidbody lastHitRb;
     const float SCALING_RATE = 1.5f;
     Vector3 scaleChange;
     public float maxScale = 40f;
@@ -25,12 +26,15 @@ public class ScaleRay : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Object being scaled up."); 
-                lastHit = hit.collider.transform;
-                if (lastHit.localScale.y <= maxScale) 
+                if (!(hit.collider.gameObject.tag == "Ground"))
                 {
-                    scaleChange = lastHit.localScale * SCALING_RATE;
-                    ScaleChange(0);
+                    lastHit = hit.collider.transform;
+                    lastHitRb = hit.collider.gameObject.GetComponent<Rigidbody>();
+                    if (lastHit.localScale.y <= maxScale) 
+                    {
+                        scaleChange = lastHit.localScale * SCALING_RATE;
+                        ScaleChange(0);
+                    }
                 }
             }
         }
@@ -41,12 +45,15 @@ public class ScaleRay : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("Object being scaled down.");
-                lastHit = hit.collider.transform;
-                if (lastHit.localScale.y >= minScale) 
+                if (!(hit.collider.gameObject.tag == "Ground"))
                 {
-                    scaleChange = lastHit.localScale * SCALING_RATE;
-                    ScaleChange(1);
+                    lastHit = hit.collider.transform;
+                    lastHitRb = hit.collider.gameObject.GetComponent<Rigidbody>();
+                    if (lastHit.localScale.y >= minScale) 
+                    {
+                        scaleChange = lastHit.localScale * SCALING_RATE;
+                        ScaleChange(1);
+                    }
                 }
             }
         }
@@ -58,11 +65,13 @@ public class ScaleRay : MonoBehaviour
         {
             case 1:
                 lastHit.localScale -= scaleChange * Time.deltaTime;
+                lastHitRb.mass -= scaleChange.y * Time.deltaTime;
                 if (!hasRightClicked) OnRightMouseClick?.Invoke();
                 hasRightClicked = true;
                 break;
             case 0:
                 lastHit.localScale += scaleChange * Time.deltaTime;
+                lastHitRb.mass += scaleChange.y * Time.deltaTime;
                 if (!hasLeftClicked) OnLeftMouseClick?.Invoke();
                 hasLeftClicked = true;
                 break;

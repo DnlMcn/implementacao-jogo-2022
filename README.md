@@ -6,11 +6,11 @@ Requerimentos:
 
 - Tamanho / Escala ✔
 - Rotação ✔
-- Gravidade 
+- Gravidade ✔
 - Velocidade ✔ 
 - Movimentação (teclado e mouse) ✔
-- Menu (uma das cenas)
-- Heads Up display
+- Menu (uma das cenas) ✔
+- Heads Up display ✔
 - Tratamento de colisões ✔
 - Joints 
 - Prefabs ✔
